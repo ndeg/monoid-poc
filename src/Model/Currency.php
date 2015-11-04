@@ -1,5 +1,7 @@
 <?php
 
+namespace MonoidPoc\Model;
+
 class Currency
 {
     /**********************/

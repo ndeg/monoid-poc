@@ -1,5 +1,9 @@
 <?php
 
+namespace MonoidPoc\Model;
+
+use MonoidPoc\Exception\UnexpectedCurrencyException;
+
 class Price
 {
     /**********************/
