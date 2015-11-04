@@ -2,6 +2,6 @@
 
 namespace MonoidPoc\Exception;
 
-class UnexpectedCurrencyException extends Exception
+class UnexpectedCurrencyException extends \Exception
 {
 }
