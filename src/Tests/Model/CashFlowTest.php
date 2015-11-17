@@ -22,7 +22,7 @@ class CashFlowTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \MonoidPoc\Exception\UnexpectedCashFlowException
+     * @expectedException \MonoidPoc\Exception\UnexpectedDateException
      */
     public function testAddRaiseExceptionIfDatesAreNotTheSame()
     {
@@ -66,7 +66,7 @@ class CashFlowTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \MonoidPoc\Exception\UnexpectedCashFlowException
+     * @expectedException \MonoidPoc\Exception\UnexpectedDateException
      */
     public function testIsEqualToRaiseExceptionIfDatesAreNotTheSame()
     {

@@ -1,7 +1,7 @@
 <?php
 namespace MonoidPoc\Model;
 
-use MonoidPoc\Exception\UnexpectedCashFlowException;
+use MonoidPoc\Exception\UnexpectedDateException;
 
 class CashFlow
 {
@@ -73,7 +73,7 @@ class CashFlow
     {
         if ($this->date->format('Y-m-d') !== $cashflow->getDate()->format('Y-m-d'))
         {
-            throw new UnexpectedCashFlowException('Impossible to compare two cashflows not belonging to the same day.');
+            throw new UnexpectedDateException('Impossible to compare two cashflows not belonging to the same day.');
         }
 
         $newCashflow = clone $this;
@@ -86,13 +86,13 @@ class CashFlow
      *
      * @return bool
      *
-     * @throws UnexpectedCashFlowException
+     * @throws UnexpectedDateException
      */
     public function isEqualTo(CashFlow $cashflow)
     {
         if ($this->date->format('Y-m-d') !== $cashflow->getDate()->format('Y-m-d'))
         {
-            throw new UnexpectedCashFlowException('Impossible to compare two cashflows not belonging to the same day.');
+            throw new UnexpectedDateException('Impossible to compare two cashflows not belonging to the same day.');
         }
 
         return $this->price->isEqualTo($cashflow->getPrice());

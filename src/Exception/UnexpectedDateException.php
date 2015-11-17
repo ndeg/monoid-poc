@@ -2,6 +2,6 @@
 
 namespace MonoidPoc\Exception;
 
-class UnexpectedCashFlowException extends \Exception
+class UnexpectedDateException extends \Exception
 {
 }
