@@ -50,7 +50,7 @@ class Price
 
     /**
      * @param float $amount
-     * 
+     *
      * @return self
      */
     public function setAmount($amount)
