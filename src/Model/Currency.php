@@ -13,6 +13,20 @@ class Currency
      */
     private $code;
 
+    /*****************/
+    /* Magic methods */
+    /*****************/
+
+    /**
+     * Constructor.
+     *
+     * @param string $code
+     */
+    public function __construct($code)
+    {
+        $this->setCode($code);
+    }
+
     /*******************/
     /* Getters-setters */
     /*******************/
@@ -23,7 +37,7 @@ class Currency
      */
     public function setCode($code)
     {
-        $this->code = $code;
+        $this->code = (string) $code;
 
         return $this;
     }

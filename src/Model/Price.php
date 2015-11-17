@@ -28,12 +28,12 @@ class Price
      * Constructor
      *
      * @param $amount
-     * @param Currency $currency
+     * @param $currencyCode
      */
-    public function __construct($amount, Currency $currency)
+    public function __construct($amount, $currencyCode)
     {
         $this->amount = (float) $amount;
-        $this->currency = $currency;
+        $this->currency = new Currency($currencyCode);
     }
 
     /*******************/
@@ -41,19 +41,31 @@ class Price
     /*******************/
 
     /**
-     * @return Currency
-     */
-    public function getCurrency()
-    {
-        return $this->currency;
-    }
-
-    /**
      * @return float
      */
     public function getAmount()
     {
         return $this->amount;
+    }
+
+    /**
+     * @param float $amount
+     * 
+     * @return self
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = (float) $amount;
+
+        return $this;
+    }
+
+    /**
+     * @return Currency
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
     }
 
     /******************/
@@ -70,11 +82,27 @@ class Price
     public function add(Price $price)
     {
         if (!$this->currency->isEqualTo($price->getCurrency())) {
-            throw new UnexpectedCurrencyException();
+            throw new UnexpectedCurrencyException("Impossible to add two prices with different currencies.");
         }
 
-        $amount = $this->getAmount() + $price->getAmount();
+        $newPrice = clone $this;
 
-        return new Price($amount, $this->getCurrency());
+        return $newPrice->setAmount($this->getAmount() + $price->getAmount());;
+    }
+
+    /**
+     * @param Price $price
+     *
+     * @return bool
+     *
+     * @throws UnexpectedCurrencyException
+     */
+    public function isEqualTo(Price $price)
+    {
+        if (!$this->currency->isEqualTo($price->getCurrency())) {
+            throw new UnexpectedCurrencyException("Impossible to compare two prices with different currencies.");
+        }
+
+        return $this->amount === $price->getAmount();
     }
 }

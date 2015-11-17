@@ -1,5 +1,8 @@
 {
   "autoload": {
     "psr-4": {"MonoidPoc\\": "src/"}
+  },
+  "require": {
+    "phpunit/phpunit": "~4"
   }
 }
