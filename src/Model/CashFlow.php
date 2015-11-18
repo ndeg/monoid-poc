@@ -28,6 +28,14 @@ class CashFlow
     }
 
     /**
+     * @return string
+     */
+    public function getFormattedDate()
+    {
+        return $this->date->format('Y-m-d');
+    }
+
+    /**
      * @return \MonoidPoc\Model\Price
      */
     public function getPrice()
@@ -71,7 +79,7 @@ class CashFlow
 
     public function add(CashFlow $cashflow)
     {
-        if ($this->date->format('Y-m-d') !== $cashflow->getDate()->format('Y-m-d'))
+        if ($this->getFormattedDate() !== $cashflow->getFormattedDate())
         {
             throw new UnexpectedDateException('Impossible to compare two cashflows not belonging to the same day.');
         }
