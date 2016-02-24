@@ -4,10 +4,10 @@ use MonoidPoc\Model\Price;
 
 class PriceTest extends \PHPUnit_Framework_TestCase
 {
-    /*****************/
-    /* ->add() tests */
-    /*****************/
-
+    /**
+     * @covers Prive::add
+     * @covers Prive::isEqualTo
+     */
     public function testAddWorksOk()
     {
         $price1 = new Price(25, 'EUR');
@@ -20,6 +20,7 @@ class PriceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers Prive::add
      * @expectedException \MonoidPoc\Exception\UnexpectedCurrencyException
      */
     public function testAddRaisesExceptionIfNecessary()
@@ -27,14 +28,14 @@ class PriceTest extends \PHPUnit_Framework_TestCase
         $price1 = new Price(25, 'EUR');
         $price2 = new Price(30, 'USD');
 
-        $price1->isEqualTo($price2);
+        $price1->add($price2);
     }
 
 
-    /*****************/
-    /* ->isEqualTo() */
-    /*****************/
 
+    /**
+     * @covers Price::isEqualTo
+     */
     public function testIsEqualToReturnTrue()
     {
         $price1 = new Price(25, 'EUR');
@@ -43,6 +44,9 @@ class PriceTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($price1->isEqualTo($price2));
     }
 
+    /**
+     * @covers Price::isEqualTo
+     */
     public function testIsEqualToReturnFalse()
     {
         $price1 = new Price(25, 'EUR');
@@ -53,6 +57,7 @@ class PriceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers Price::isEqualTo
      * @expectedException \MonoidPoc\Exception\UnexpectedCurrencyException
      */
     public function testIsEqualToRaiseExceptionIfNecessary()
