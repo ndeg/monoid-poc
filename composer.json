@@ -3,6 +3,6 @@
     "psr-4": {"MonoidPoc\\": "src/"}
   },
   "require": {
-    "phpunit/phpunit": "~4"
+    "phpunit/phpunit": "^4.8.28"
   }
 }
